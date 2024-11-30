@@ -81,9 +81,22 @@ document.getElementById('bookForm').addEventListener('submit', function (event) 
   };
 
   books.push(newBook);
-  saveData(); 
-  renderBooks(); 
+  saveData();
+  renderBooks();
+  showNotification();
 });
+
+function showNotification() {
+  const notification = document.getElementById('notification');
+  notification.style.display = 'flex';  
+  notification.classList.add('show');
+
+
+  setTimeout(() => {
+    notification.classList.remove('show');
+    notification.style.display = 'none';
+  }, 3000);
+}
 
 document.addEventListener('ondataloaded', function () {
   renderBooks();
